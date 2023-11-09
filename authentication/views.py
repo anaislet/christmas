@@ -24,7 +24,8 @@ def login_page(request):
 
                 else:
                     request.session['member'] = member_name_form
-                    return redirect("home")
+                    print(member_model.id)
+                    return redirect("home", member_model.id)
 
             except Member.DoesNotExist:
 
@@ -33,7 +34,7 @@ def login_page(request):
                     new_member = Member.objects.create(name=member_name_form, family=new_member_family)
                     print(new_member)
                     request.session['member'] = new_member.name
-                    return redirect("home")
+                    return redirect("home", new_member.id)
                 
                 except Family.DoesNotExist:
                     message = "Ce mot de passe ne correspond à aucune famille enregistrée"

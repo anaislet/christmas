@@ -1,5 +1,5 @@
 from django.db import models
-from authentication.models import Member
+from authentication.models import Member, Family
 
 class Gift(models.Model):
     class Price(models.TextChoices):
@@ -9,6 +9,7 @@ class Gift(models.Model):
 
     id = models.AutoField(primary_key=True)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    family = models.ForeignKey(Family, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     link = models.URLField(null=True, blank=True)
     price = models.CharField(choices=Price.choices, max_length=20)

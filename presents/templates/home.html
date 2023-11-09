@@ -1,4 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
     <p>Vous êtes connecté {{ request.session.member|default:"user"}}!</p>
+    <p>La liste de vos cadeaux : </p>
+    <ul>
+        {% for my_present in my_presents %}
+        <li>{{my_present.name}}</li>
+        {% endfor %}
+    </ul>
+    <p>Les cadeaux des membres de votre famille : </p>
+    <ul>
+        {% for member in family_members %}
+        <h2>{{member}}</h2>
+            {% for family_present in family_presents %}
+            <li>{{family_present.name}}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
 {% endblock content %}
