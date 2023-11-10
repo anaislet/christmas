@@ -16,7 +16,7 @@ def login_page(request):
             password_form = form.cleaned_data.get('family_password')
 
             try:
-                member_model = Member.objects.get(name= member_name_form)
+                member_model = Member.objects.get(name__iexact= member_name_form)
                 family_model = Family.objects.get(name=member_model.family)
 
                 if family_model.password != password_form:

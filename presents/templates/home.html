@@ -9,11 +9,13 @@
     </ul>
     <p>Les cadeaux des membres de votre famille : </p>
     <ul>
-        {% for member in family_members %}
-        <h2>{{member}}</h2>
-            {% for family_present in family_presents %}
-            <li>{{family_present.name}}</li>
-            {% endfor %}
+        {% for family_member in family_members %}
+            <h3>{{family_member}}</h3>
+                {% for present in family_presents %}
+                    {% if present.member == family_member %}
+                        <li>{{present.name}}</li>
+                    {% endif %}
+                {% endfor %}
         {% endfor %}
     </ul>
 {% endblock content %}
