@@ -11,6 +11,16 @@
             let popup = document.getElementById('popup')
             popup.style.display = 'none'
         }
+
+        function openConfirm() {
+            let popup = document.getElementById('confirm')
+            popup.style.display = 'block'
+        }
+
+        function closeConfirm() {
+            let popup = document.getElementById('confirm')
+            popup.style.display = 'none'
+        }
     </script>
 
 
@@ -18,21 +28,27 @@
     <p>Voici où le trouver : {{present.link}}</p>
     <p>Game de prix {{present.price}}</p>
 
-    {% if present.id != request.session.member_id %}
+    {% if present.member != member %}
         <p>Je réserve ce cadeau !</p>
     {% endif %}
 
-    {% if present.id == request.session.member_id %}
-        <button onclick="openPopup()">Modifier le cadeau</button>
-    
-        <div id="popup" style="display: none; background-color: red;">
-            <p>Ceci est le contenu de la popup</p>
-            <p>contenu du cadeau {{present.name}}</p>
-            {% include 'modify_present_form.html' %}
-            <button onclick="closePopup()">Fermer</button>
-        </div>
-    {% endif %}
 
-    <p><a href="/home/{{request.session.member_id}}">Retour à la liste de cadeaux</a></p>
+    <button onclick="openPopup()">Modifier le cadeau</button>
+    <button onclick="openConfirm()">Supprimer le cadeau</button>
+   
+
+    <div id="popup" style="display: none; background-color: red;">
+        <p>contenu du cadeau {{present.name}}</p>
+        {% include 'modify_present_form.html' %}
+        <button onclick="closePopup()">Fermer</button>
+    </div>
+
+    <div id="confirm" style="display: none; background-color: green;">
+        <p>Etes vous sûr de vouloir supprimer le cadeau suivant : {{present.name}} ?</p>
+        <a href="{% url 'delete-present' present.id member_id %}">OUI</a>
+        <button onclick="closeConfirm()">Non</button>
+    </div>
+
+    <p><a href="/home/{{member_id}}">Retour à la liste de cadeaux</a></p>
 
 {% endblock content %}

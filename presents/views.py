@@ -30,7 +30,6 @@ def my_list(request):
     return render(request, 'mylist.html')
 
 def present_detail(request, present_id):
-    print(request.session['member_id'])
     my_present = Gift.objects.get(id=present_id)
 
     #Formulaire de modification du cadeau
@@ -47,6 +46,9 @@ def present_detail(request, present_id):
         change_present_form = forms.ModifyGiftForm(instance=present)
         message = ""
     
-    #Suppression du cadeau
-    ############################################################################################
-    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'message': message})
+    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member': request.session['member'],'member_id': request.session['member_id'], 'message': message})
+
+def delete_present(request, present_id, member_id):
+    present = get_object_or_404(Gift, id=present_id)
+    present.delete()
+    return redirect("home", member_id)
