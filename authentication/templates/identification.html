@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>{{ message }}</p>
-    <h2>Ma famille existe déjà, je me connecte</h2>
-    <form method="post">
-        {{ login_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Se connecter</button>
-    </form>
-
-    <h2>Ma famille n'existe pas encore, je la créé</h2>
-    <form method="post">
-        {{ registration_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >Inscrire ma famille</button>
-    </form>
+<div class="accueil_authentication">
+    <!-- <p>{{ message }}</p> -->
+    <div class="authentication">
+        <h2>Accéder à votre </br>espace famille</h2>
+        <form method="post">
+            {{ login_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Connexion</button>
+        </form>
+    </div>
+    <div class="authentication">
+        <h2>Nouvelle famille ? </br>Incrivez-vous ici</h2>
+        <form method="post">
+            {{ registration_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Inscription</button>
+        </form>
+    </div>
+</div>
 {% endblock content %}

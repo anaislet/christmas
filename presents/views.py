@@ -45,8 +45,10 @@ def present_detail(request, present_id):
     else:
         change_present_form = forms.ModifyGiftForm(instance=present)
         message = ""
-    
-    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member': request.session['member'],'member_id': request.session['member_id'], 'message': message})
+
+    is_mine = str(my_present.member) == request.session['member']
+
+    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message})
 
 def delete_present(request, present_id, member_id):
     present = get_object_or_404(Gift, id=present_id)

@@ -1,9 +1,16 @@
+{% load static %}
+
 <html>
     <head>
-        <title>Christmas Gifts</title>
+        <title>FamilySantaSync</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Christmas Gifts</h1>
+        <h1>FamilySantaSync</h1>
         {% block content %}{% endblock content %}
         {% if user.is_authenticated %}
         <!-- <p>Vous êtes connecté en tant que {{ request.user }}. </p> -->
