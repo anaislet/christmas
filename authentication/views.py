@@ -27,6 +27,7 @@ def identification_page(request):
 
                 else:
                     request.session['member'] = member_name_form
+                    request.session['member_id'] = member_model.id
                     return redirect("home", member_model.id)
 
             except Member.DoesNotExist:
@@ -35,6 +36,7 @@ def identification_page(request):
                     new_member_family = Family.objects.get(password=password_form)
                     new_member = Member.objects.create(name=member_name_form, family=new_member_family)
                     request.session['member'] = new_member.name
+                    request.session['member_id'] = new_member.id
                     return redirect("home", new_member.id)
                 
                 except Family.DoesNotExist:

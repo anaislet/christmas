@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>Mon cadeau de rêve {{present.name}}</p>
+    <p>Voici où le trouver : {{present.link}}</p>
+    <p>Game de prix {{present.price}}</p>
+
+    <p><a href="/home/{{request.session.member_id}}">Retour à la liste de cadeaux</a></p>
+{% endblock content %}

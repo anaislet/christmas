@@ -4,7 +4,7 @@
     <p>La liste de vos cadeaux : </p>
     <ul>
         {% for my_present in my_presents %}
-        <li>{{my_present.name}}</li>
+        <li><a href="{% url 'present-detail' my_present.id %}">{{my_present.name}}</a></li>
         {% endfor %}
     </ul>
     <p>Les cadeaux des membres de votre famille : </p>

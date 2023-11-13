@@ -27,3 +27,7 @@ def home(request, member_id):
 
 def my_list(request):
     return render(request, 'mylist.html')
+
+def present_detail(request, present_id):
+    my_present = Gift.objects.get(id=present_id)
+    return render(request, 'present_detail.html', {'present': my_present})
