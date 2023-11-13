@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>{{ message }}</p>
+    <h2>Ma famille existe déjà, je me connecte</h2>
+    <form method="post">
+        {{ login_form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Se connecter</button>
+    </form>
+
+    <h2>Ma famille n'existe pas encore, je la créé</h2>
+    <form method="post">
+        {{ registration_form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Inscrire ma famille</button>
+    </form>
+{% endblock content %}
