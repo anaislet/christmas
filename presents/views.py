@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from authentication.models import Member
 from presents.models import Gift
 from django.db.models import Count
+from . import forms
 
 
 # @login_required
@@ -29,5 +30,23 @@ def my_list(request):
     return render(request, 'mylist.html')
 
 def present_detail(request, present_id):
+    print(request.session['member_id'])
     my_present = Gift.objects.get(id=present_id)
-    return render(request, 'present_detail.html', {'present': my_present})
+
+    #Formulaire de modification du cadeau
+    present = get_object_or_404(Gift, id=present_id)
+
+    if request.method == 'POST':
+        change_present_form = forms.ModifyGiftForm(request.POST, instance=present)
+        if change_present_form.is_valid():
+            change_present_form.save()
+            return redirect("present-detail", present_id)
+        else:
+            message = "Erreur dans le formulaire. Veuillez vérifier les données saisies."
+    else:
+        change_present_form = forms.ModifyGiftForm(instance=present)
+        message = ""
+    
+    #Suppression du cadeau
+    ############################################################################################
+    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'message': message})

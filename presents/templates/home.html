@@ -13,7 +13,7 @@
             <h3>{{family_member}}</h3>
                 {% for present in family_presents %}
                     {% if present.member == family_member %}
-                        <li>{{present.name}}</li>
+                    <li><a href="{% url 'present-detail' present.id %}">{{present.name}}</a></li>
                     {% endif %}
                 {% endfor %}
         {% endfor %}

@@ -1,8 +1,38 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <p>Mon cadeau de rêve {{present.name}}</p>
+    <script>
+        function openPopup() {
+            let popup = document.getElementById('popup')
+            popup.style.display = 'block'
+        }
+
+        function closePopup() {
+            let popup = document.getElementById('popup')
+            popup.style.display = 'none'
+        }
+    </script>
+
+
+    <p>Mon cadeau de rêve : {{present.name}}</p>
     <p>Voici où le trouver : {{present.link}}</p>
     <p>Game de prix {{present.price}}</p>
 
+    {% if present.id != request.session.member_id %}
+        <p>Je réserve ce cadeau !</p>
+    {% endif %}
+
+    {% if present.id == request.session.member_id %}
+        <button onclick="openPopup()">Modifier le cadeau</button>
+    
+        <div id="popup" style="display: none; background-color: red;">
+            <p>Ceci est le contenu de la popup</p>
+            <p>contenu du cadeau {{present.name}}</p>
+            {% include 'modify_present_form.html' %}
+            <button onclick="closePopup()">Fermer</button>
+        </div>
+    {% endif %}
+
     <p><a href="/home/{{request.session.member_id}}">Retour à la liste de cadeaux</a></p>
+
 {% endblock content %}

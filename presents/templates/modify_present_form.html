@@ -1,0 +1,8 @@
+{% block content %}
+    <p>ICI LE FORMULAIRE DE MODIF</p>
+    <form method="post" style="background-color: yellow;">
+        {% csrf_token %}
+        {{ change_present_form.as_p }}
+        <button type="submit">Enregistrer les modifications</button>
+    </form>
+{% endblock content %}
