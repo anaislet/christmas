@@ -114,6 +114,8 @@ body {
     border-radius: 200px 200px 0 0;
     width: 400px;
     min-height: max-content;
+    position: relative;
+    padding-bottom: 110px;
 }
 
 .my_presents_content {
@@ -170,6 +172,35 @@ body {
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.yellow_button {
+    color: #183D3D;
+    position: absolute;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+.yellow_button div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    background-color: #daa520;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.yellow_button img {
+    width: 20px;
+    height: 20px;
+}
+
+.yellow_button p {
+    font-family: 'Abel', sans-serif;
+    color: #183D3D;
+    font-size: 20px;
+    margin: 0;
 }
 
 .family_presents {
@@ -268,7 +299,7 @@ body {
 .right_home {
     display: flex;
     flex-direction: column;
-    gap: 100px;
+    gap: 50px;
 }
 
 .right_home div {
@@ -287,9 +318,18 @@ body {
     font-size: 50px;
     text-align: center;
 }
-.shopping_list p {
+
+.shopping_list {
+    background-color: #daa520 !important;
+}
+
+.shopping_list h3 {
+    text-align: center;
+    color: #183D3D;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
     margin-top: 20px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .shopping_list {
@@ -298,7 +338,7 @@ body {
     flex-direction: column;
 }
 
-.shopping_list img{
+.shopping_list img {
     width: 50px;
     height: 50px;
 }

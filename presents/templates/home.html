@@ -14,11 +14,17 @@
                 <li><a href="{% url 'present-detail' my_present.id %}">{{my_present.name}}</a></li>
                 {% endfor %}
             </ul>
+            <a class="yellow_button">
+                <div>
+                    <img src="../../authentication/static/gift.svg"/>
+                    <p>Ajouter un cadeau à ma liste</p>
+                </div>
+            </a>
         </div>
     </div>
     <div class="family_presents">
         <div class="family_presents_content">
-            <p class="id_family">famille {{family_id}}</p>
+            <p class="id_family">Famille {{family_id}}</p>
             <div class="family_presents_content_center">
                 {% for family_member in family_members %}
                 <div class="family_member">
@@ -39,13 +45,16 @@
         </div>
     </div>
     <div class="right_home">
-        <div class="shopping_list">
-            <p>Ma liste </br>de courses</p>
-            <img src="../../authentication/static/cart.svg"/>
-        </div>
         <div class="countdown">
             <p>J -&nbsp</p>
             <p>{{timelaps.days}} jours</p>
+        </div>
+        <div class="shopping_list">
+            <h3>Ma liste </br>de courses</h3>
+            <img src="../../authentication/static/cart.svg"/>
+        </div>
+        <div class="countdown">
+            <p>lundi 25 </br>décembre</p>
         </div>
     </div>
 </div>
