@@ -1,21 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
-    <p>Vous êtes connecté {{ request.session.member|default:"user"}}!</p>
-    <p>La liste de vos cadeaux : </p>
-    <ul>
-        {% for my_present in my_presents %}
-        <li><a href="{% url 'present-detail' my_present.id %}">{{my_present.name}}</a></li>
-        {% endfor %}
-    </ul>
-    <p>Les cadeaux des membres de votre famille : </p>
-    <ul>
-        {% for family_member in family_members %}
-            <h3>{{family_member}}</h3>
-                {% for present in family_presents %}
-                    {% if present.member == family_member %}
-                    <li><a href="{% url 'present-detail' present.id %}">{{present.name}}</a></li>
-                    {% endif %}
+<div class="home_page">
+    <div class="my_presents">
+        <div class="my_presents_content">
+            <p class="id_member">{{ request.session.member|default:"user"}}</p>
+            <p>Ma liste de Noël : </p>
+            <ul>
+                {% for my_present in my_presents %}
+                <li><a href="{% url 'present-detail' my_present.id %}">{{my_present.name}}</a></li>
                 {% endfor %}
-        {% endfor %}
-    </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="family_presents">
+        <div class="family_presents_content">
+            <p class="id_family">famille {{family_id}}</p>
+            <div class="family_presents_content_center">
+                {% for family_member in family_members %}
+                <div class="family_member">
+                    <h3>{{family_member}}</h3>
+                    {% for present in family_presents %}
+                    <ul>
+                        {% if present.member == family_member %}
+                        <li><a href="{% url 'present-detail' present.id %}">{{present.name}}</a></li>
+                        {% endif %}
+                    </ul>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="right_home">
+        <div class="shopping_list">
+            <p>Ma liste </br>de courses</p>
+        </div>
+        <div class="countdown">
+            <p>Décompte de Noël</p>
+        </div>
+    </div>
+</div>
 {% endblock content %}

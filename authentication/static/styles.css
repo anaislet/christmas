@@ -9,7 +9,8 @@ h1 {
     font-family: 'Clicker Script', cursive;
     font-size: 140px;
     text-align: center;
-    margin: 50px auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 p {
@@ -18,7 +19,7 @@ p {
     font-size: 30px;
 }
 
-/******************************* Page d'authentification *****************************/
+/******************************* authentication.html *****************************/
 
 .accueil_authentication {
     display: flex;
@@ -65,5 +66,151 @@ p {
     margin-top: 40px;
     width: 150px;
     font-family: 'Abel', sans-serif;
+    cursor: pointer;
 }
 
+/******************************* base.html *****************************/
+
+.circle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.circle div {
+    background-color: #daa520;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.circle div img {
+    width: 50px;
+    height: 50px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+/******************************* home.html *****************************/
+
+.home_page {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    gap: 50px;
+    margin: -50px 50px;
+}
+
+.my_presents {
+    background-color: #93B1A6;
+    border-radius: 200px 200px 0 0;
+    width: 400px;
+    height: 100vh;
+}
+
+.my_presents_content {
+    margin: 100px 20px 10px 20px;
+}
+
+.my_presents_content .id_member{
+    color: #183D3D;
+    font-family: 'Clicker Script', cursive;
+    font-size: 70px;
+    text-align: center;
+}
+
+.my_presents_content ul{
+    list-style-type: circle;
+}
+
+.my_presents_content ul li {
+    margin-bottom: 10px;
+}
+
+.my_presents_content ul li a {
+    font-family: 'Abel', sans-serif;
+    color: #183D3D;
+    font-size: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.family_presents {
+    background-color: #183D3D;
+    border-radius: 10px;
+    width:60%;
+    margin: 80px 0;
+}
+
+.family_presents_content .id_family {
+    color: #93B1A6;
+    font-family: 'Clicker Script', cursive;
+    font-size: 70px;
+    text-align: center;
+}
+
+.family_presents_content_center {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.family_presents_content .family_member {
+    border: solid 1px #93B1A6;
+    color: #93B1A6;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    width: 30%;
+    height: max-content;
+    margin-bottom: 20px;
+}
+
+.family_presents_content .family_member ul{
+    list-style-type: circle;
+}
+
+.family_presents_content .family_member ul li {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.family_presents_content .family_member ul li a {
+    font-family: 'Abel', sans-serif;
+    color: #93B1A6;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.right_home {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.right_home div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #93B1A6;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+}
+
+.right_home p {
+    color: #183D3D;
+    font-family: 'Clicker Script', cursive;
+    font-size: 50px;
+    text-align: center;
+}
+
+.shopping_list {
+    cursor: pointer;
+}

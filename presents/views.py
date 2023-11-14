@@ -23,7 +23,7 @@ def home(request, member_id):
 
     return render(request, 
                   'home.html',
-                  {'my_presents': my_presents, 'family_presents': family_presents, 'family_members': family_members}
+                  {'my_presents': my_presents, 'family_presents': family_presents, 'family_members': family_members, 'family_id': family_id}
                 )
 
 def my_list(request):

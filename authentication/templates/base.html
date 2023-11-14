@@ -8,9 +8,23 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" type="favicon/png" href="../../authentication/static/gift.svg">
     </head>
     <body>
         <h1>FamilySantaSync</h1>
+        {% if request.path != '/'%}
+            <div class="circle">
+                {% if 'home' not in request.path%}
+                    <div>
+                        <!-- A modifier -->
+                        <a href="{% url 'home' 1 %}"><img src="../../authentication/static/home.svg"/></a>
+                    </div>
+                {% endif %}
+                <div>
+                    <a href="{% url 'identification' %}"></a><img src="../../authentication/static/logout.svg"/></a>
+                </div>
+            </div>
+        {% endif %}
         {% block content %}{% endblock content %}
         {% if user.is_authenticated %}
         <!-- <p>Vous êtes connecté en tant que {{ request.user }}. </p> -->
