@@ -4,6 +4,7 @@ from authentication.models import Member
 from presents.models import Gift
 from django.db.models import Count
 from . import forms
+from datetime import datetime, timedelta
 
 
 # @login_required
@@ -21,9 +22,14 @@ def home(request, member_id):
     #liste des membres appartenant à la famille du membre identifié y compris lui-même
     family_members = Member.objects.filter(family_id=family_id).exclude(id=member_id)
 
+    #décompte
+    christmass_date = datetime(2023, 12, 25)
+    now = datetime.now()
+    timelaps = christmass_date - now
+
     return render(request, 
                   'home.html',
-                  {'my_presents': my_presents, 'family_presents': family_presents, 'family_members': family_members, 'family_id': family_id}
+                  {'my_presents': my_presents, 'family_presents': family_presents, 'family_members': family_members, 'family_id': family_id, 'timelaps': timelaps}
                 )
 
 def my_list(request):

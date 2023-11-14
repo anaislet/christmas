@@ -122,7 +122,13 @@ p {
     text-align: center;
 }
 
-.my_presents_content ul{
+.my_presents_content h3 {
+    color: #183D3D;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+}
+
+.my_presents_content ul {
     list-style-type: circle;
 }
 

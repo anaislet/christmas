@@ -4,7 +4,7 @@
     <div class="my_presents">
         <div class="my_presents_content">
             <p class="id_member">{{ request.session.member|default:"user"}}</p>
-            <p>Ma liste de Noël : </p>
+            <h3>Ma liste de Noël : </h3>
             <ul>
                 {% for my_present in my_presents %}
                 <li><a href="{% url 'present-detail' my_present.id %}">{{my_present.name}}</a></li>
@@ -36,7 +36,8 @@
             <p>Ma liste </br>de courses</p>
         </div>
         <div class="countdown">
-            <p>Décompte de Noël</p>
+            <p>J -&nbsp</p>
+            <p>{{timelaps.days}} jours</p>
         </div>
     </div>
 </div>
