@@ -1,5 +1,6 @@
 body {
     background-image: url('./christmas_tree.jpg');
+    background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -71,6 +72,10 @@ p {
 
 /******************************* base.html *****************************/
 
+body {
+    padding-bottom: 80px;
+}
+
 .circle {
     display: flex;
     flex-direction: row;
@@ -108,11 +113,25 @@ p {
     background-color: #93B1A6;
     border-radius: 200px 200px 0 0;
     width: 400px;
-    height: 100vh;
+    min-height: max-content;
 }
 
 .my_presents_content {
-    margin: 100px 20px 10px 20px;
+    margin: 100px 30px 10px 30px;
+}
+
+.my_presents_content img {
+    width: 50px;
+    height: 50px;
+}
+
+.my_presents_content .header_member {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
 }
 
 .my_presents_content .id_member{
@@ -120,26 +139,35 @@ p {
     font-family: 'Clicker Script', cursive;
     font-size: 70px;
     text-align: center;
+    margin-bottom: 50px;
+}
+
+.my_presents_content .line {
+    border-bottom: solid 1px #183D3D;
+    width: 100%;
+    height: 1px;
 }
 
 .my_presents_content h3 {
     color: #183D3D;
     font-family: 'Abel', sans-serif;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .my_presents_content ul {
     list-style-type: circle;
+    margin: 0;
 }
 
 .my_presents_content ul li {
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .my_presents_content ul li a {
     font-family: 'Abel', sans-serif;
     color: #183D3D;
-    font-size: 30px;
+    font-size: 20px;
     text-decoration: none;
     cursor: pointer;
 }
@@ -148,7 +176,7 @@ p {
     background-color: #183D3D;
     border-radius: 10px;
     width:60%;
-    margin: 80px 0;
+    margin-top: 80px;
 }
 
 .family_presents_content .id_family {
@@ -156,29 +184,72 @@ p {
     font-family: 'Clicker Script', cursive;
     font-size: 70px;
     text-align: center;
+    margin: 50px 0;
 }
 
 .family_presents_content_center {
-    padding: 0 30px;
+    margin: 0 30px;
+    padding-top: 30px ;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-top: solid 1px #93B1A6;
 }
 
 .family_presents_content .family_member {
-    border: solid 1px #93B1A6;
     color: #93B1A6;
     font-family: 'Abel', sans-serif;
     font-size: 25px;
     text-align: center;
-    width: 30%;
+    width: 45%;
     height: max-content;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    background-color: rgb(48, 81, 81);
+    box-shadow: 5px 5px 7px rgba(4,13,18,.4);
+}
+
+.family_presents_content .family_member:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+  }
+
+  .family_presents_content .family_member:nth-child(3n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+  }
+
+  .family_presents_content .family_member:nth-child(5n) {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  }
+
+.family_presents_content .family_member .header_family {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.family_presents_content .family_member .header_family h3 {
+    color: #93B1A6;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+}
+
+.family_presents_content .family_member img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
 }
 
 .family_presents_content .family_member ul{
     list-style-type: circle;
+    margin: 0;
 }
 
 .family_presents_content .family_member ul li {
@@ -216,7 +287,18 @@ p {
     font-size: 50px;
     text-align: center;
 }
+.shopping_list p {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
 
 .shopping_list {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.shopping_list img{
+    width: 50px;
+    height: 50px;
 }

@@ -3,7 +3,11 @@
 <div class="home_page">
     <div class="my_presents">
         <div class="my_presents_content">
-            <p class="id_member">{{ request.session.member|default:"user"}}</p>
+            <div class="header_member">
+                <img src="../../authentication/static/member.svg"/>
+                <p class="id_member">{{ request.session.member|default:"user"}}</p>
+            </div>
+            <div class="line"></div>
             <h3>Ma liste de Noël : </h3>
             <ul>
                 {% for my_present in my_presents %}
@@ -18,7 +22,10 @@
             <div class="family_presents_content_center">
                 {% for family_member in family_members %}
                 <div class="family_member">
-                    <h3>{{family_member}}</h3>
+                    <div class="header_family">
+                        <img src="../../authentication/static/family.svg"/>
+                        <h3>{{family_member}}</h3>
+                    </div>
                     {% for present in family_presents %}
                     <ul>
                         {% if present.member == family_member %}
@@ -34,6 +41,7 @@
     <div class="right_home">
         <div class="shopping_list">
             <p>Ma liste </br>de courses</p>
+            <img src="../../authentication/static/cart.svg"/>
         </div>
         <div class="countdown">
             <p>J -&nbsp</p>
