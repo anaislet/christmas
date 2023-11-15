@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="my_shopping_list">
+    <p>Shopping list</p>
+    {% for all_gift_info in all_gift_infos %}
+    <div class="a_gift">
+        <p>{{all_gift_info.name}}</p>
+        <p>{{all_gift_info.link}}</p>
+        <p>{{all_gift_info.price}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

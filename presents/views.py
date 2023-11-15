@@ -24,8 +24,6 @@ def home(request, member_id):
     #liste des membres appartenant à la famille du membre identifié y compris lui-même
     family_members = Member.objects.filter(family_id=family_name).exclude(id=member_id)
 
-    print("family_id",family_id)
-
     #  Formulaire d'ajout du cadeau
     member = get_object_or_404(Member, id=member_id)
     family = get_object_or_404(Family, id=family_id)
@@ -61,9 +59,6 @@ def home(request, member_id):
                   }
                 )
 
-def my_list(request):
-    return render(request, 'mylist.html')
-
 def present_detail(request, present_id):
     my_present = Gift.objects.get(id=present_id)
 
@@ -93,14 +88,22 @@ def present_detail(request, present_id):
 
     return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message, 'is_booked': is_booked})
 
+
 def delete_present(request, present_id, member_id):
     present = get_object_or_404(Gift, id=present_id)
     present.delete()
     return redirect("home", member_id)
+
 
 def purchase_present(request, present_id, member_id):
     member = get_object_or_404(Member, id=member_id)
     gift = get_object_or_404(Gift, id=present_id)
 
     new_purchase = Purchase.objects.create(member=member, gift=gift)
-    return redirect("home", member_id)
+    return redirect("shopping-list", member_id)
+
+
+def shopping_list(request, member_id):
+    my_booked_gifts = Purchase.objects.filter(member=member_id)
+    all_gift_infos = [my_booked_gift.gift for my_booked_gift in my_booked_gifts]
+    return render(request, 'shopping_list.html', {'all_gift_infos': all_gift_infos})

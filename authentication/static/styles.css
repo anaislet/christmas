@@ -348,3 +348,16 @@ body {
 .single_present {
     background-color: white;
 }
+
+/******************************* shopping_list.html *****************************/
+
+.my_shopping_list {
+    background-color: white;
+}
+
+.a_gift {
+    display: flex;
+    flex-direction: row;
+    background-color: #93B1A6;
+    margin-bottom: 10px;
+}

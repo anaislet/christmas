@@ -66,8 +66,10 @@
             <p>{{timelaps.days}} jours</p>
         </div>
         <div class="shopping_list">
-            <h3>Ma liste </br>de courses</h3>
-            <img src="../../authentication/static/cart.svg"/>
+            <a href="{% url 'shopping-list' request.session.member_id %}">
+                <h3>Ma liste </br>de courses</h3>
+                <img src="../../authentication/static/cart.svg"/>
+            </a>
         </div>
         <div class="countdown">
             <p>lundi 25 </br>décembre</p>

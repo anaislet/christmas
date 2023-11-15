@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', authentication.views.identification_page, name='identification'),
     path('home/<int:member_id>', presents.views.home, name='home'),
-    path('mylist/', presents.views.my_list, name='mylist'),
+    path('shoppinglist/<int:member_id>', presents.views.shopping_list, name='shopping-list'),
     path('presentdetail/<int:present_id>', presents.views.present_detail, name='present-detail'),
     path('deletepresent/<int:present_id>/<int:member_id>', presents.views.delete_present, name='delete-present'),
     path('purchasepresent/<int:present_id>/<int:member_id>', presents.views.purchase_present, name='purchase-present'),
