@@ -1,0 +1,7 @@
+{% block content %}
+    <form method="post" style="background-color: yellow;">
+        {% csrf_token %}
+        {{ add_present_form.as_p }}
+        <button type="submit">Ajouter ce cadeau</button>
+    </form>
+{% endblock content %}

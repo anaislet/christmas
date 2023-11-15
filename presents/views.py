@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
-from authentication.models import Member
+from authentication.models import Member, Family
 from presents.models import Gift
 from django.db.models import Count
 from . import forms
@@ -11,16 +11,37 @@ from datetime import datetime, timedelta
 def home(request, member_id):
 
     #nom de la famille à laquelle appartient le membre qui s'est identifié
-    family_id = Member.objects.get(id=member_id).family
+    family_name = Member.objects.get(id=member_id).family
+
+    family_id = Member.objects.get(id=member_id).family_id
 
     #liste des cadeaux du membre identifié
     my_presents = Gift.objects.filter(member=member_id)
 
     #liste des cadeaux appartenant à un membre de la famille du membre identifié
-    family_presents = Gift.objects.filter(family=family_id).select_related('member')
+    family_presents = Gift.objects.filter(family=family_name).select_related('member')
 
     #liste des membres appartenant à la famille du membre identifié y compris lui-même
-    family_members = Member.objects.filter(family_id=family_id).exclude(id=member_id)
+    family_members = Member.objects.filter(family_id=family_name).exclude(id=member_id)
+
+    print("family_id",family_id)
+
+    #  Formulaire d'ajout du cadeau
+    member = get_object_or_404(Member, id=member_id)
+    family = get_object_or_404(Family, id=family_id)
+    if request.method == 'POST':
+        add_present_form = forms.AddGiftForm(request.POST)
+        if add_present_form.is_valid():
+            gift = add_present_form.save(commit=False)
+            gift.member = member
+            gift.family = family
+            gift.save()
+            return redirect("home", member_id)
+        else:
+            message = "Erreur dans le formulaire. Veuillez vérifier les données saisies."
+    else:
+        add_present_form = forms.AddGiftForm()
+        message = ""
 
     #décompte
     christmass_date = datetime(2023, 12, 25)
@@ -29,7 +50,15 @@ def home(request, member_id):
 
     return render(request, 
                   'home.html',
-                  {'my_presents': my_presents, 'family_presents': family_presents, 'family_members': family_members, 'family_id': family_id, 'timelaps': timelaps}
+                  {
+                    'my_presents': my_presents,
+                    'family_presents': family_presents,
+                    'family_members': family_members,
+                    'family_name': family_name,
+                    'add_present_form': add_present_form,
+                    'message':message,
+                    'timelaps': timelaps
+                  }
                 )
 
 def my_list(request):

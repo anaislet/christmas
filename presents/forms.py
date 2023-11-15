@@ -7,3 +7,9 @@ class ModifyGiftForm(forms.ModelForm):
     class Meta:
         model = Gift
         fields = ['name', 'link', 'price']
+
+class AddGiftForm(forms.ModelForm):
+    class Meta:
+        model = Gift
+        fields = ['name', 'link', 'price']
+        exclude = ['member', 'family']
