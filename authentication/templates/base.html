@@ -16,18 +16,14 @@
             <div class="circle">
                 {% if 'home' not in request.path%}
                     <div>
-                        <!-- A modifier -->
-                        <a href="{% url 'home' 1 %}"><img src="../../authentication/static/home.svg"/></a>
+                        <a href="{% url 'home' request.session.member_id %}"><img src="../../authentication/static/home.svg"/></a>
                     </div>
                 {% endif %}
                 <div>
-                    <a href="{% url 'identification' %}"></a><img src="../../authentication/static/logout.svg"/></a>
+                    <a href="{% url 'identification' %}"><img src="../../authentication/static/logout.svg"/></a>
                 </div>
             </div>
         {% endif %}
         {% block content %}{% endblock content %}
-        {% if user.is_authenticated %}
-        <!-- <p>Vous êtes connecté en tant que {{ request.user }}. </p> -->
-        {% endif %}
     </body>
 </html>

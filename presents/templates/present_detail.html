@@ -29,12 +29,13 @@
         <p>Gamme de prix {{present.price}}</p>
 
         {% if is_mine == False %}
-            <a href="{% url 'purchase-present' present.id member_id %}"><p>Je réserve ce cadeau !</p></a>
-            {% if is_booked == True %}
+            {% if is_booked != True %}
+                <a href="{% url 'purchase-present' present.id member_id %}"><p>Je réserve ce cadeau !</p></a>                    
+            {% else %}
                 <p>Réservé</p>
             {% endif %}
-        {% else %}
-        
+
+        {% elif is_mine == True %}
             <button onclick="openPopup()">Modifier le cadeau</button>
             <button onclick="openConfirm()">Supprimer le cadeau</button>
 
