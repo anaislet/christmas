@@ -16,3 +16,8 @@ class Gift(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Purchase(models.Model):
+    id = models.AutoField(primary_key=True)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    gift = models.ForeignKey(Gift, on_delete=models.CASCADE)

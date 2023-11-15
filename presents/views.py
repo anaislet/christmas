@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from authentication.models import Member, Family
-from presents.models import Gift
+from presents.models import Gift, Purchase
 from django.db.models import Count
 from . import forms
 from datetime import datetime, timedelta
@@ -81,11 +81,26 @@ def present_detail(request, present_id):
         change_present_form = forms.ModifyGiftForm(instance=present)
         message = ""
 
+    # relevé du statut réservé ou non
+    try:
+        gift = Purchase.objects.get(gift=present_id)
+        is_booked = True
+
+    except Purchase.DoesNotExist:
+        is_booked = False
+
     is_mine = str(my_present.member) == request.session['member']
 
-    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message})
+    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message, 'is_booked': is_booked})
 
 def delete_present(request, present_id, member_id):
     present = get_object_or_404(Gift, id=present_id)
     present.delete()
+    return redirect("home", member_id)
+
+def purchase_present(request, present_id, member_id):
+    member = get_object_or_404(Member, id=member_id)
+    gift = get_object_or_404(Gift, id=present_id)
+
+    new_purchase = Purchase.objects.create(member=member, gift=gift)
     return redirect("home", member_id)

@@ -23,34 +23,37 @@
         }
     </script>
 
+    <div class="single_present">
+        <p>Mon cadeau de rêve : {{present.name}}</p>
+        <p>Voici où le trouver : {{present.link}}</p>
+        <p>Gamme de prix {{present.price}}</p>
 
-    <p>Mon cadeau de rêve : {{present.name}}</p>
-    <p>Voici où le trouver : {{present.link}}</p>
-    <p>Gamme de prix {{present.price}}</p>
+        {% if is_mine == False %}
+            <a href="{% url 'purchase-present' present.id member_id %}"><p>Je réserve ce cadeau !</p></a>
+            {% if is_booked == True %}
+                <p>Réservé</p>
+            {% endif %}
+        {% else %}
+        
+            <button onclick="openPopup()">Modifier le cadeau</button>
+            <button onclick="openConfirm()">Supprimer le cadeau</button>
 
-    {% if is_mine == False %}
-        <p>Je réserve ce cadeau !</p>
-    
-    {% else %}
-    
-        <button onclick="openPopup()">Modifier le cadeau</button>
-        <button onclick="openConfirm()">Supprimer le cadeau</button>
+            <div id="popup" style="display: none; background-color: red;">
+                <p>contenu du cadeau {{present.name}}</p>
+                {% include 'modify_present_form.html' %}
+                <button onclick="closePopup()">Fermer</button>
+            </div>
 
-        <div id="popup" style="display: none; background-color: red;">
-            <p>contenu du cadeau {{present.name}}</p>
-            {% include 'modify_present_form.html' %}
-            <button onclick="closePopup()">Fermer</button>
-        </div>
+            <div id="confirm" style="display: none; background-color: green;">
+                <p>Etes vous sûr de vouloir supprimer le cadeau suivant : {{present.name}} ?</p>
+                <a href="{% url 'delete-present' present.id member_id %}">OUI</a>
+                <button onclick="closeConfirm()">Non</button>
+            </div>
 
-        <div id="confirm" style="display: none; background-color: green;">
-            <p>Etes vous sûr de vouloir supprimer le cadeau suivant : {{present.name}} ?</p>
-            <a href="{% url 'delete-present' present.id member_id %}">OUI</a>
-            <button onclick="closeConfirm()">Non</button>
-        </div>
-
-    {% endif %}
+        {% endif %}
 
 
-    <p><a href="/home/{{member_id}}">Retour à la liste de cadeaux</a></p>
+        <p><a href="/home/{{member_id}}">Retour à la liste de cadeaux</a></p>
+    </div>
 
 {% endblock content %}
