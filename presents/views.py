@@ -107,3 +107,9 @@ def shopping_list(request, member_id):
     my_booked_gifts = Purchase.objects.filter(member=member_id)
     all_gift_infos = [my_booked_gift.gift for my_booked_gift in my_booked_gifts]
     return render(request, 'shopping_list.html', {'all_gift_infos': all_gift_infos})
+
+
+def delete_purchase(request, present_id, member_id):
+    purchase = get_object_or_404(Purchase, gift=present_id)
+    purchase.delete()
+    return redirect("shopping-list", member_id)

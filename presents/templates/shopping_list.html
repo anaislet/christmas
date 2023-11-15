@@ -7,6 +7,7 @@
         <p>{{all_gift_info.name}}</p>
         <p>{{all_gift_info.link}}</p>
         <p>{{all_gift_info.price}}</p>
+        <a href="{% url 'delete-purchase' all_gift_info.id request.session.member_id %}">J'ai changé d'avis</a>
     </div>
     {% endfor %}
 </div>
