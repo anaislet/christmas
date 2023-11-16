@@ -86,7 +86,7 @@ def present_detail(request, present_id):
 
     is_mine = str(my_present.member) == request.session['member']
 
-    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message, 'is_booked': is_booked})
+    return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message, 'is_booked': is_booked, 'member': my_present.member})
 
 
 def delete_present(request, present_id, member_id):

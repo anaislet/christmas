@@ -4,57 +4,90 @@
     <script>
         function openPopup() {
             let popup = document.getElementById('popup')
+            let background_popup = document.getElementById('background_popup')
             popup.style.display = 'block'
+            background_popup.style.display = 'block'
         }
 
         function closePopup() {
             let popup = document.getElementById('popup')
+            let background_popup = document.getElementById('background_popup')
             popup.style.display = 'none'
+            background_popup.style.display = 'none'
         }
 
         function openConfirm() {
             let popup = document.getElementById('confirm')
+            let background_popup = document.getElementById('background_popup')
             popup.style.display = 'block'
+            background_popup.style.display = 'block'
+
         }
 
         function closeConfirm() {
             let popup = document.getElementById('confirm')
+            let background_popup = document.getElementById('background_popup')
             popup.style.display = 'none'
+            background_popup.style.display = 'none'
         }
     </script>
 
     <div class="single_present">
-        <p>Mon cadeau de rêve : {{present.name}}</p>
-        <p>Voici où le trouver : {{present.link}}</p>
-        <p>Gamme de prix {{present.price}}</p>
+        {% if is_mine == True %}
+            <p class="single_present_title">Pour moi ...</p>
+        {% else %}
+            <p class="single_present_title">Pour {{member}} ...</p>
+        {% endif %}
+        <div class="gift_presentation">
+            <img src="../../authentication/static/gift-light.svg"/>
+            <p>{{present.name}}</p>
+        </div>
+        <div class="gift_presentation">
+            <img src="../../authentication/static/at.svg"/>
+            <a href="{{present.link}}" target="_blank">{{present.link}}</a>
+        </div>
+        <div class="gift_presentation">
+            <img src="../../authentication/static/euro.svg"/>
+            <p>{{present.price}}</p>
+        </div>
 
         {% if is_mine == False %}
             {% if is_booked != True %}
-                <a href="{% url 'purchase-present' present.id member_id %}"><p>Je réserve ce cadeau !</p></a>                    
+            <div class="book">
+                <img src="../../authentication/static/santa.svg"/>
+                <a href="{% url 'purchase-present' present.id member_id %}"><p>Je réserve ce cadeau</p></a>                    
+            </div>
             {% else %}
+            <div class="booked">
                 <p>Réservé</p>
+            </div>
             {% endif %}
 
         {% elif is_mine == True %}
-            <button onclick="openPopup()">Modifier le cadeau</button>
-            <button onclick="openConfirm()">Supprimer le cadeau</button>
-
-            <div id="popup" style="display: none; background-color: red;">
+        <div class="button_modify_my_present">
+            <button onclick="openPopup()" class="modify_my_present">
+                <img src="../../authentication/static/pencil.svg"/>
+                Modifier le cadeau
+            </button>
+            <button onclick="openConfirm()" class="modify_my_present">
+                <img src="../../authentication/static/trash.svg"/>
+                Supprimer le cadeau
+            </button>
+        </div>
+            <div id="background_popup" style="display: none;"></div>
+            <div id="popup" style="display: none;">
                 <p>contenu du cadeau {{present.name}}</p>
                 {% include 'modify_present_form.html' %}
                 <button onclick="closePopup()">Fermer</button>
             </div>
 
-            <div id="confirm" style="display: none; background-color: green;">
+            <div id="confirm" style="display: none;">
                 <p>Etes vous sûr de vouloir supprimer le cadeau suivant : {{present.name}} ?</p>
                 <a href="{% url 'delete-present' present.id member_id %}">OUI</a>
                 <button onclick="closeConfirm()">Non</button>
             </div>
 
         {% endif %}
-
-
-        <p><a href="/home/{{member_id}}">Retour à la liste de cadeaux</a></p>
     </div>
 
 {% endblock content %}
