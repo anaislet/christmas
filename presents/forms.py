@@ -13,3 +13,13 @@ class AddGiftForm(forms.ModelForm):
         model = Gift
         fields = ['name', 'link', 'price']
         exclude = ['member', 'family']
+
+        labels = {
+            'name': 'Intitulé',
+            'link': 'Lien URL',
+            'price': 'Prix',
+        }
+
+        widgets = {
+            'price': forms.Select(choices=Gift.Price.choices),
+        }

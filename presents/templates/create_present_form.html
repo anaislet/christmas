@@ -1,7 +1,13 @@
 {% block content %}
-    <form method="post" style="background-color: yellow;">
+<div class="present_form">
+    <form method="post">
+        <p class="add_present_title">J'ajoute une idée cadeau à ma liste</p>
         {% csrf_token %}
         {{ add_present_form.as_p }}
-        <button type="submit">Ajouter ce cadeau</button>
+        <button type="submit" class="add_present_button">
+            <img src="../../authentication/static/add.svg"/>
+            Ajouter ce cadeau
+        </button>
     </form>
+</div>
 {% endblock content %}

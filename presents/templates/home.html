@@ -3,12 +3,16 @@
 <script>
     function openPopup() {
         let popup = document.getElementById('creation_popup')
+        let overlay = document.getElementById('overlay')
         popup.style.display = 'block'
+        overlay.style.display = 'block'
     }
 
     function closePopup() {
         let popup = document.getElementById('creation_popup')
+        let overlay = document.getElementById('overlay')
         popup.style.display = 'none'
+        overlay.style.display = 'none'
     }
 </script>
 
@@ -33,10 +37,6 @@
                 </div>
             </a>
         </div>
-    </div>
-    <div id="creation_popup" style="display: none; background-color: red;">
-        {% include 'create_present_form.html' %}
-        <button onclick="closePopup()">Fermer</button>
     </div>
     <div class="family_presents">
         <div class="family_presents_content">
@@ -75,5 +75,10 @@
             <p>lundi 25 </br>décembre</p>
         </div>
     </div>
+</div>
+<div id="overlay" style="display: none;"></div>
+<div id="creation_popup" style="display: none;">
+    <button onclick="closePopup()" class="close_button">X</button>
+    {% include 'create_present_form.html' %}
 </div>
 {% endblock content %}

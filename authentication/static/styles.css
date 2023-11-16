@@ -74,6 +74,7 @@ p {
 
 body {
     padding-bottom: 80px;
+    position:relative;
 }
 
 .circle {
@@ -108,6 +109,8 @@ body {
     gap: 50px;
     margin: -50px 50px;
 }
+
+/*******************my_present part******************/
 
 .my_presents {
     background-color: #93B1A6;
@@ -208,6 +211,43 @@ body {
     margin: 0;
 }
 
+/***********modale de creation du cadeau**********/
+
+#creation_popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    background-color: #183D3D;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.close_button {
+    background-color: #183D3D;
+    color: #daa520;
+    border: none;
+    font-size: 20px;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*******************partie centrale******************/
+
 .family_presents {
     background-color: #183D3D;
     border-radius: 10px;
@@ -302,6 +342,8 @@ body {
     cursor: pointer;
 }
 
+/*******************partie de droite******************/
+
 .right_home {
     display: flex;
     flex-direction: column;
@@ -367,4 +409,68 @@ body {
     flex-direction: row;
     background-color: #93B1A6;
     margin-bottom: 10px;
+}
+
+/******************************* create_present_form.html *****************************/
+.present_form form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.present_form input {
+    background-color: rgb(48, 81, 81);
+    width: 100%;
+    font-size: 30px;
+    color: #93B1A6;
+    font-family: 'Abel', sans-serif;
+    border: none;
+}
+
+.present_form label {
+    font-size: 30px;
+    color: #93B1A6;
+    font-family: 'Abel', sans-serif;
+}
+
+.present_form select {
+    background-color: rgb(48, 81, 81);
+    width: 50%;
+    font-size: 30px;
+    color: #93B1A6;
+    font-family: 'Abel', sans-serif;
+    margin-top: 10px;
+}
+
+.add_present_title {
+    color: #93B1A6;
+    font-family: 'Clicker Script', cursive;
+    font-size: 70px;
+    text-align: center;
+    padding: 0 0 50px 0;
+    border-bottom: solid 1px #93B1A6;
+}
+
+.add_present_button {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #daa520;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: 'Abel', sans-serif;
+    color: #183D3D;
+    font-size: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.add_present_button img {
+    width: 20px;
+    height: 20px;
 }

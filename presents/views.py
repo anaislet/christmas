@@ -42,9 +42,9 @@ def home(request, member_id):
         message = ""
 
     #décompte
-    christmass_date = datetime(2023, 12, 25)
+    christmas_date = datetime(2023, 12, 25)
     now = datetime.now()
-    timelaps = christmass_date - now
+    timelaps = christmas_date - now
 
     return render(request, 
                   'home.html',
