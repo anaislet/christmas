@@ -14,9 +14,6 @@ class ModifyGiftForm(forms.ModelForm):
             'price': 'Prix',
         }
 
-        widgets = {
-            'price': forms.Select(choices=Gift.Price.choices),
-        }
 
 class AddGiftForm(forms.ModelForm):
     class Meta:
@@ -28,8 +25,4 @@ class AddGiftForm(forms.ModelForm):
             'name': 'Intitulé',
             'link': 'Lien URL',
             'price': 'Prix',
-        }
-
-        widgets = {
-            'price': forms.Select(choices=Gift.Price.choices),
         }
