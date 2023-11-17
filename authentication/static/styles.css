@@ -610,3 +610,44 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.confirm_text {
+    font-family: 'Abel', sans-serif;
+    color: #93B1A6;
+    font-size: 30px;
+}
+
+.confirm_bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+
+.confirm_delete {
+    padding-right: 20px;
+}
+
+.confirm_delete a {
+    text-decoration: none;
+    color: #183D3D;
+}
+
+.confirm_delete a div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.modify_present_title {
+    color: #93B1A6;
+    font-family: 'Clicker Script', cursive;
+    font-size: 70px;
+    text-align: center;
+    padding: 0 0 50px 0;
+    border-bottom: solid 1px #93B1A6;
+    margin-top: 0;
+    margin-bottom: 50px;
+}

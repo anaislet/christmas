@@ -8,6 +8,16 @@ class ModifyGiftForm(forms.ModelForm):
         model = Gift
         fields = ['name', 'link', 'price']
 
+        labels = {
+            'name': 'Intitulé',
+            'link': 'Lien URL',
+            'price': 'Prix',
+        }
+
+        widgets = {
+            'price': forms.Select(choices=Gift.Price.choices),
+        }
+
 class AddGiftForm(forms.ModelForm):
     class Meta:
         model = Gift

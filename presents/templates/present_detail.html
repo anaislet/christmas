@@ -76,15 +76,29 @@
         </div>
             <div id="background_popup" style="display: none;"></div>
             <div id="popup" style="display: none;">
-                <p>contenu du cadeau {{present.name}}</p>
+                <button onclick="closePopup()" class="close_button">X</button>
                 {% include 'modify_present_form.html' %}
-                <button onclick="closePopup()">Fermer</button>
             </div>
 
             <div id="confirm" style="display: none;">
-                <p>Etes vous sûr de vouloir supprimer le cadeau suivant : {{present.name}} ?</p>
-                <a href="{% url 'delete-present' present.id member_id %}">OUI</a>
-                <button onclick="closeConfirm()">Non</button>
+                <div class="present_form">
+                    <p class="modify_present_title">Je supprime un cadeau de ma liste</p>
+                    <p class="confirm_text">Etes-vous sûr de vouloir supprimer {{present.name}} ?</p>
+                    <div class="confirm_bottom">
+                        <div class="modify_my_present confirm_delete">
+                            <a href="{% url 'delete-present' present.id member_id %}">
+                                <div>
+                                    <img src="../../authentication/static/trash.svg"/>
+                                    Oui
+                                </div>
+                            </a>
+                        </div>
+                        <button onclick="closeConfirm()" class="modify_my_present">
+                            <img src="../../authentication/static/gift.svg"/>
+                            Non
+                        </button>
+                    </div>
+                </div>
             </div>
 
         {% endif %}
