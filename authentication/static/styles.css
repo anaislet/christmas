@@ -546,18 +546,22 @@ body {
 .booked {
     display: flex;
     justify-content: center;
-    background-color: #daa520;
+    border: solid 2px #daa520;
+    background-color: rgb(48, 81, 81);
     width: 100px;
     height: 100px;
     border-radius: 50%;
     position: absolute;
-    bottom: 50px;
-    right: 50px;
+    top: 170px;
+    right: 80px;
+    transform: rotate(20deg);
+    padding: 10px;
+    box-shadow: 5px 5px 7px rgba(4,13,18,.4);
 }
 
 .booked p {
     font-family: 'Abel', sans-serif;
-    color: #183D3D;
+    color: #daa520;
     font-size: 30px;
 }
 
