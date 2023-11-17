@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="my_shopping_list">
-    <p>Shopping list</p>
-    {% for all_gift_info in all_gift_infos %}
-    <div class="a_gift">
-        <p>{{all_gift_info.name}}</p>
-        <p>{{all_gift_info.link}}</p>
-        <p>{{all_gift_info.price}}</p>
-        <a href="{% url 'delete-purchase' all_gift_info.id request.session.member_id %}">J'ai changé d'avis</a>
+<div class="my_shopping_list single_present">
+    <p class="add_present_title">Shopping list</p>
+    <div class="presentation_shopping_list">
+        <div class="pattern">
+            <div class="content">
+                <ul>
+                    {% for all_gift_info in all_gift_infos %}
+                    <li>
+                        <div class="a_gift">
+                            <p><a href="{{all_gift_info.link}}" target="_blank">{{all_gift_info.name}}</a> (pour {{all_gift_info.member}})</p>
+                            <div class="  change_mind">
+                                <a href="{%  url 'delete-purchase' all_gift_info.id request.session.member_id %}">J'ai changé d'avis</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock content %}

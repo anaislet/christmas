@@ -384,7 +384,7 @@ body {
 .shopping_list {
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .shopping_list img {
@@ -394,15 +394,77 @@ body {
 
 /******************************* shopping_list.html *****************************/
 
-.my_shopping_list {
+.presentation_shopping_list {
     background-color: white;
+    width: 70%;
+    margin: 20px auto;
+    position: relative;
+    gap: 50px;
+    border-radius: 0 20px 20px 0;
+    top:5px;
+    min-height: 500px;
+    padding: 20px 0;
 }
 
-.a_gift {
+.presentation_shopping_list::before {
+    position: absolute;
+    top: 0;
+    left: 150px;
+    content: '';
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255,0,0,0.6);
+}
+
+.pattern {
+    height: 100%;
+    background-image: repeating-linear-gradient(white -20px, white 47px, teal 48px);
+}
+.content {
+    padding-left: 140px;
+    margin-top: 10px;
+}
+
+ .a_gift {
     display: flex;
     flex-direction: row;
-    background-color: #93B1A6;
-    margin-bottom: 10px;
+    align-items: center;
+    position: relative;
+    gap: 25px;
+}
+
+.a_gift p, .a_gift a {
+    font-size: 42px;
+    color: #313332;
+    font-family: 'Dawning of a New Day', cursive;
+    text-decoration: none;
+}
+
+.a_gift p {
+    font-size: 36px;
+    margin: 0px;
+}
+
+.presentation_shopping_list ul {
+    list-style-type: circle;
+    margin: 0;
+    color: #313332;
+    padding-top: 0;
+}
+
+.change_mind {
+    position: absolute;
+    right: -150px;
+    bottom: 20px;
+}
+
+.change_mind a {
+    font-size: 20px;
+    font-family: 'Abel', sans-serif;
+    color: #daa520;
+}
+.change_mind a:hover {
+    text-decoration: underline;
 }
 
 /******************************* create_present_form.html *****************************/
