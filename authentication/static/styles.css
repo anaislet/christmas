@@ -3,6 +3,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
 }
 
 h1 {
@@ -21,6 +22,97 @@ p {
 }
 
 /******************************* authentication.html *****************************/
+
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .snowflake {
+    position: absolute;
+    background-color: #fff;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: falling linear infinite;
+  }
+  
+  @keyframes falling {
+    0% {
+      transform: translateY(-100vh);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+/********** Styles individuels pour chaque flocon ***********/
+.snowflake:nth-child(1) {
+    left: 10%;
+    animation-duration: 10s;
+    animation-delay: -8s;
+}
+  
+.snowflake:nth-child(2) {
+    left: 20%;
+    animation-duration: 13s;
+    animation-delay: -8s;
+}
+  
+.snowflake:nth-child(3) {
+    left: 30%;
+    animation-duration: 12s;
+    animation-delay: -5s;
+    width: 7px;
+    height: 7px;
+}
+
+.snowflake:nth-child(4) {
+    left: 40%;
+    animation-duration: 15s;
+    animation-delay: -5s;
+    width: 13px;
+    height: 13px;
+}
+  
+.snowflake:nth-child(5) {
+    left: 50%;
+    animation-duration: 11s;
+    animation-delay: -8s;
+}
+  
+.snowflake:nth-child(6) {
+    left: 60%;
+    animation-duration: 10s;
+    animation-delay: -5s;
+    width: 7px;
+    height: 7px;
+}
+
+.snowflake:nth-child(7) {
+    left: 70%;
+    animation-duration: 14s;
+    animation-delay: -5s;
+}
+  
+.snowflake:nth-child(8) {
+    left: 80%;
+    animation-duration: 11s;
+    animation-delay: -5s;
+    width: 13px;
+    height: 13px;
+}
+  
+.snowflake:nth-child(9) {
+    left: 90%;
+    animation-duration: 15s;
+    animation-delay: -8s;
+}
 
 .accueil_authentication {
     display: flex;
