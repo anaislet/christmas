@@ -430,7 +430,6 @@ body {
     color: #93B1A6;
     font-size: 20px;
     text-decoration: none;
-    /* text-decoration: line-through; */
     cursor: pointer;
 }
 
@@ -533,7 +532,6 @@ body {
 }
 
 .a_gift p {
-    font-size: 36px;
     margin: 0px;
 }
 
@@ -560,7 +558,7 @@ body {
 }
 
 /******************************* create_present_form.html *****************************/
-.present_form form{
+.present_form form {
     display: flex;
     flex-direction: column;
     gap: 5px;

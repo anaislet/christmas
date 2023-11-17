@@ -9,7 +9,11 @@
                     {% for all_gift_info in all_gift_infos %}
                     <li>
                         <div class="a_gift">
-                            <p><a href="{{all_gift_info.link}}" target="_blank">{{all_gift_info.name}}</a> (pour {{all_gift_info.member}})</p>
+                            {% if all_gift_info.link == None %}
+                                <p>{{all_gift_info.name}} (pour {{all_gift_info.member}})</p>
+                            {% else %}
+                                <p><a href="{{all_gift_info.link}}" target="_blank">{{all_gift_info.name}}</a> (pour {{all_gift_info.member}})</p>
+                            {% endif %}
                             <div class="  change_mind">
                                 <a href="{%  url 'delete-purchase' all_gift_info.id request.session.member_id %}">J'ai changé d'avis</a>
                             </div>

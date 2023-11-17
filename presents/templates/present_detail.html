@@ -44,7 +44,11 @@
         </div>
         <div class="gift_presentation">
             <img src="../../authentication/static/at.svg"/>
-            <a href="{{present.link}}" target="_blank">{{present.link}}</a>
+            {% if present.link == None %}
+                <p>pas de lien</p>
+            {% else %}
+                <a href="{{present.link}}" target="_blank">{{present.link}}</a>
+            {% endif %}
         </div>
         <div class="gift_presentation">
             <img src="../../authentication/static/euro.svg"/>
