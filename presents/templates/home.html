@@ -51,7 +51,14 @@
                     {% for present in family_presents %}
                     <ul>
                         {% if present.member == family_member %}
-                        <li><a href="{% url 'present-detail' present.id %}">{{present.name}}</a></li>
+                        <div class="a_present_preview">
+                            <li><a href="{% url 'present-detail' present.id %}">{{present.name}}</a></li>
+                            {% if present.is_reserved %}
+                                <div class="is_booked_preview">
+                                    <p>R</p>
+                                </div>
+                            {% endif %}
+                        </div>
                         {% endif %}
                     </ul>
                     {% endfor %}

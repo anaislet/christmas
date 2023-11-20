@@ -24,6 +24,12 @@ def home(request, member_id):
     #liste des membres appartenant à la famille du membre identifié y compris lui-même
     family_members = Member.objects.filter(family_id=family_name).exclude(id=member_id)
 
+    #liste des id de cadeaux présents dans les transactions prévues
+    purchases = Purchase.objects.all()
+    reserved_gifts = {purchase.gift_id: True for purchase in purchases}
+    for present in family_presents:
+        present.is_reserved = reserved_gifts.get(present.id, False)
+
     #  Formulaire d'ajout du cadeau
     member = get_object_or_404(Member, id=member_id)
     family = get_object_or_404(Family, id=family_id)

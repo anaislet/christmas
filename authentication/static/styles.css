@@ -433,6 +433,30 @@ body {
     cursor: pointer;
 }
 
+.a_present_preview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+}
+
+.is_booked_preview{
+    background-color: #daa520;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    /* position: absolute;
+    top: 10px;
+    right: 10px; */
+}
+
+.is_booked_preview p {
+    color: #183D3D;
+    font-family: 'Abel', sans-serif;
+    font-size: 20px;
+    margin: 0;
+}
+
 /*******************partie de droite******************/
 
 .right_home {
