@@ -5,6 +5,7 @@ from .models import Family, Member
 from django.views.generic import View
 
 def identification_page(request):
+    request.session.clear()
     login_form = forms.CustomLoginForm()
     registration_form = forms.CustomRegistrationForm()
     message = ''

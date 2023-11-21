@@ -206,7 +206,7 @@ body {
 
 .my_presents {
     background-color: #93B1A6;
-    border-radius: 200px 200px 0 0;
+    border-radius: 10px 200px 0 0;
     width: 400px;
     min-height: max-content;
     position: relative;
@@ -214,7 +214,7 @@ body {
 }
 
 .my_presents_content {
-    margin: 100px 30px 10px 30px;
+    margin: 65px 30px 10px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
