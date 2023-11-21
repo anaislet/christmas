@@ -78,7 +78,7 @@
                 Supprimer le cadeau
             </button>
         </div>
-            <div id="background_popup" style="display: none;"></div>
+            <div id="background_popup" onclick="closePopup()" style="display: none;"></div>
             <div id="popup" style="display: none;">
                 <button onclick="closePopup()" class="close_button">X</button>
                 {% include 'modify_present_form.html' %}
