@@ -10,7 +10,6 @@ class Gift(models.Model):
 
     id = models.AutoField(primary_key=True)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    family = models.ForeignKey(Family, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     link = models.URLField(null=True, blank=True)
     price = models.CharField(choices=PRICES, max_length=20)

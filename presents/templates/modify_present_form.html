@@ -1,7 +1,7 @@
 {% block content %}
 <div class="present_form">
     <form method="post">
-        <p class="modify_present_title">Je modifie mon cadeau</p>
+        <h4>Je modifie mon cadeau</h4>
         {% csrf_token %}
         {{ change_present_form.as_p }}
         <button type="submit" class="add_present_button">

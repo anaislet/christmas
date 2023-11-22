@@ -15,10 +15,45 @@ h1 {
     margin-bottom: 30px;
 }
 
+h2 {
+    color: #183D3D;
+    font-family: 'Clicker Script', cursive;
+    font-size: 50px;
+    text-align: center;
+}
+
+h3 {
+    color: #183D3D;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+}
+
+h4 {
+    color: #93B1A6;
+    font-family: 'Clicker Script', cursive;
+    font-weight: lighter;
+    font-size: 70px;
+    text-align: center;
+    padding: 0 0 50px 0;
+    border-bottom: solid 1px #93B1A6;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
 p {
     font-family: 'Abel', sans-serif;
-    color: #040D12;
+    color: #183D3D;
     font-size: 30px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /******************************* authentication.html *****************************/
@@ -129,13 +164,6 @@ p {
     padding: 50px;
 }
 
-.authentication h2 {
-    color: #183D3D;
-    font-family: 'Clicker Script', cursive;
-    font-size: 50px;
-    text-align: center;
-}
-
 .authentication form {
     text-align: center;
 }
@@ -186,8 +214,8 @@ body {
 }
 
 .circle div img {
-    width: 50px;
-    height: 50px;
+    /* width: 50px;
+    height: 50px; */
     margin-top: 25px;
     cursor: pointer;
 }
@@ -220,11 +248,6 @@ body {
     justify-content: center;
 }
 
-.my_presents_content img {
-    width: 50px;
-    height: 50px;
-}
-
 .my_presents_content .header_member {
     display: flex;
     flex-direction: row;
@@ -248,12 +271,6 @@ body {
     height: 1px;
 }
 
-.my_presents_content h3 {
-    color: #183D3D;
-    font-family: 'Abel', sans-serif;
-    font-size: 30px;
-}
-
 .my_presents_content ul {
     list-style-type: circle;
     margin: 0;
@@ -269,8 +286,6 @@ body {
     font-family: 'Abel', sans-serif;
     color: #183D3D;
     font-size: 20px;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .yellow_button {
@@ -298,8 +313,6 @@ body {
 }
 
 .yellow_button p {
-    font-family: 'Abel', sans-serif;
-    color: #183D3D;
     font-size: 20px;
     margin: 0;
 }
@@ -349,11 +362,10 @@ body {
 }
 
 .family_presents_content .id_family {
-    color: #93B1A6;
-    font-family: 'Clicker Script', cursive;
-    font-size: 70px;
-    text-align: center;
-    margin: 50px 0;
+
+    margin-top: 50px;
+    padding: 0;
+    border: none;
 }
 
 .family_presents_content_center {
@@ -430,8 +442,6 @@ body {
     font-family: 'Abel', sans-serif;
     color: #93B1A6;
     font-size: 20px;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .a_present_preview {
@@ -449,8 +459,6 @@ body {
 }
 
 .is_booked_preview p {
-    color: #183D3D;
-    font-family: 'Abel', sans-serif;
     font-size: 20px;
     margin: 0;
 }
@@ -474,7 +482,6 @@ body {
 }
 
 .right_home p {
-    color: #183D3D;
     font-family: 'Clicker Script', cursive;
     font-size: 50px;
     text-align: center;
@@ -491,18 +498,12 @@ body {
     font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
-    text-decoration: none;
 }
 
 .shopping_list {
     cursor: pointer;
     display: flex;
     flex-direction: row;
-}
-
-.shopping_list img {
-    width: 50px;
-    height: 50px;
 }
 
 /******************************* shopping_list.html *****************************/
@@ -550,7 +551,6 @@ body {
     font-size: 42px;
     color: #313332;
     font-family: 'Dawning of a New Day', cursive;
-    text-decoration: none;
 }
 
 .a_gift p {
@@ -610,17 +610,6 @@ body {
     margin-top: 10px;
 }
 
-.add_present_title {
-    color: #93B1A6;
-    font-family: 'Clicker Script', cursive;
-    font-size: 70px;
-    text-align: center;
-    padding: 0 0 50px 0;
-    border-bottom: solid 1px #93B1A6;
-    margin-top: 0;
-    margin-bottom: 50px;
-}
-
 .add_present_button {
     position: fixed;
     bottom: 50px;
@@ -656,17 +645,6 @@ body {
     position: relative;
 }
 
-.single_present_title {
-    color: #93B1A6;
-    font-family: 'Clicker Script', cursive;
-    font-size: 70px;
-    text-align: center;
-    padding: 0 0 50px 0;
-    border-bottom: solid 1px #93B1A6;
-    margin-top: 0;
-    margin-bottom: 50px;
-}
-
 .gift_presentation {
     display: flex;
     flex-direction: row;
@@ -675,16 +653,10 @@ body {
     gap: 30px;
 }
 
-.gift_presentation img {
-    width: 50px;
-    height: 50px
-}
-
 .gift_presentation p, .gift_presentation a {
     font-family: 'Abel', sans-serif;
     color: #93B1A6;
     font-size: 30px;
-    text-decoration: none;
 }
 
 .book {
@@ -707,14 +679,8 @@ body {
 }
 
 .book p {
-    font-family: 'Abel', sans-serif;
-    color: #183D3D;
     font-size: 20px;
     margin: 0;
-}
-
-.book a {
-    text-decoration: none;
 }
 
 .booked {
@@ -734,9 +700,7 @@ body {
 }
 
 .booked p {
-    font-family: 'Abel', sans-serif;
     color: #daa520;
-    font-size: 30px;
 }
 
 .button_modify_my_present {
@@ -807,7 +771,6 @@ body {
 }
 
 .confirm_delete a {
-    text-decoration: none;
     color: #183D3D;
 }
 
@@ -819,13 +782,3 @@ body {
     gap: 10px;
 }
 
-.modify_present_title {
-    color: #93B1A6;
-    font-family: 'Clicker Script', cursive;
-    font-size: 70px;
-    text-align: center;
-    padding: 0 0 50px 0;
-    border-bottom: solid 1px #93B1A6;
-    margin-top: 0;
-    margin-bottom: 50px;
-}

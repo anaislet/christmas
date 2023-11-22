@@ -2,18 +2,18 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from authentication.models import Member, Family
 from presents.models import Gift, Purchase
-from django.db.models import Count
 from . import forms
-from datetime import datetime, timedelta
+from datetime import datetime
 
 def authorized_access(request, url):
     session_id = request.session.get('member_id', False)
     if session_id:
         if 'presentdetail' in request.path:
             member_family = Member.objects.get(id=request.session['member_id']).family
-            my_present = Gift.objects.get(id=url)
+            displayed_present_member = Gift.objects.get(id=url).member_id
+            displayed_present_family = Member.objects.get(id=displayed_present_member).family
 
-            if my_present.family == member_family:
+            if displayed_present_family == member_family:
                 return True
             else:
                 return False
@@ -29,14 +29,14 @@ def home(request, member_id):
 
         #nom de la famille à laquelle appartient le membre qui s'est identifié
         family_name = Member.objects.get(id=member_id).family
-
         family_id = Member.objects.get(id=member_id).family_id
 
         #liste des cadeaux du membre identifié
         my_presents = Gift.objects.filter(member=member_id)
 
         #liste des cadeaux appartenant à un membre de la famille du membre identifié
-        family_presents = Gift.objects.filter(family=family_name).select_related('member')
+        family_members = Member.objects.filter(family=family_id)
+        family_presents = Gift.objects.filter(member__in=family_members)
 
         #liste des membres appartenant à la famille du membre identifié y compris lui-même
         family_members = Member.objects.filter(family_id=family_name).exclude(id=member_id)
@@ -47,7 +47,7 @@ def home(request, member_id):
         for present in family_presents:
             present.is_reserved = reserved_gifts.get(present.id, False)
 
-        #  Formulaire d'ajout du cadeau
+        #formulaire d'ajout du cadeau
         member = get_object_or_404(Member, id=member_id)
         family = get_object_or_404(Family, id=family_id)
         if request.method == 'POST':
@@ -58,11 +58,8 @@ def home(request, member_id):
                 gift.family = family
                 gift.save()
                 return redirect("home", member_id)
-            else:
-                message = "Erreur dans le formulaire. Veuillez vérifier les données saisies."
         else:
             add_present_form = forms.AddGiftForm()
-            message = ""
 
         #décompte
         christmas_date = datetime(2023, 12, 25)
@@ -77,10 +74,8 @@ def home(request, member_id):
                         'family_members': family_members,
                         'family_name': family_name,
                         'add_present_form': add_present_form,
-                        'message':message,
                         'timelaps': timelaps
-                    }
-                    )
+                    })
     else:
         return redirect("home", request.session['member_id']) 
 
@@ -90,7 +85,7 @@ def present_detail(request, present_id):
 
         my_present = Gift.objects.get(id=present_id)
 
-        #Formulaire de modification du cadeau
+        #formulaire de modification du cadeau
         present = get_object_or_404(Gift, id=present_id)
 
         if request.method == 'POST':
@@ -98,13 +93,10 @@ def present_detail(request, present_id):
             if change_present_form.is_valid():
                 change_present_form.save()
                 return redirect("present-detail", present_id)
-            else:
-                message = "Erreur dans le formulaire. Veuillez vérifier les données saisies."
         else:
             change_present_form = forms.ModifyGiftForm(instance=present)
-            message = ""
 
-        # relevé du statut réservé ou non
+        #relevé du statut réservé ou non
         try:
             gift = Purchase.objects.get(gift=present_id)
             is_booked = True
@@ -114,7 +106,16 @@ def present_detail(request, present_id):
 
         is_mine = str(my_present.member) == request.session['member']
 
-        return render(request, 'present_detail.html', {'present': my_present, 'change_present_form': change_present_form, 'member_id': request.session['member_id'], 'is_mine': is_mine, 'message': message, 'is_booked': is_booked, 'member': my_present.member})
+        return render(request,
+                      'present_detail.html',
+                    {
+                        'present': my_present,
+                        'change_present_form': change_present_form,
+                        'member_id': request.session['member_id'],
+                        'is_mine': is_mine,
+                        'is_booked': is_booked,
+                        'member': my_present.member
+                    })
     else:
         return redirect("home", request.session['member_id'])
 

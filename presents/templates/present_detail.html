@@ -35,9 +35,9 @@
 
     <div class="single_present">
         {% if is_mine == True %}
-            <p class="single_present_title">Pour moi ...</p>
+            <h4>Pour moi ...</h4>
         {% else %}
-            <p class="single_present_title">Pour {{member}} ...</p>
+            <h4>Pour {{member}} ...</h4>
         {% endif %}
         <div class="gift_presentation">
             <img src="../../authentication/static/gift-light.svg"/>
@@ -87,7 +87,7 @@
 
             <div id="confirm" style="display: none;">
                 <div class="present_form">
-                    <p class="modify_present_title">Je supprime un cadeau de ma liste</p>
+                    <h4>Je supprime un cadeau de ma liste</h4>
                     <p class="confirm_text">Etes-vous sûr de vouloir supprimer {{present.name}} ?</p>
                     <div class="confirm_bottom">
                         <div class="modify_my_present confirm_delete">
