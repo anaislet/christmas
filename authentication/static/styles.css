@@ -190,6 +190,26 @@ a {
     cursor: pointer;
 }
 
+.errorlist {
+    display: none;
+}
+
+.message {
+    background-color: #daa520;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 10px;
+    z-index: 20;
+    padding: 2px 10px;
+}
+
+.message p {
+    padding: 0;
+    margin: 0;
+    font-size: 25px;
+}
+
 /******************************* base.html *****************************/
 
 body {
@@ -214,8 +234,6 @@ body {
 }
 
 .circle div img {
-    /* width: 50px;
-    height: 50px; */
     margin-top: 25px;
     cursor: pointer;
 }

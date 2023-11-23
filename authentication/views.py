@@ -5,7 +5,8 @@ from .models import Family, Member
 from django.views.generic import View
 
 def identification_page(request):
-    request.session.clear()
+    request.session['member'] = None
+    request.session['member_id'] = None
     login_form = forms.CustomLoginForm()
     registration_form = forms.CustomRegistrationForm()
     message = ''
@@ -43,16 +44,24 @@ def identification_page(request):
                 except Family.DoesNotExist:
                     message = "Ce mot de passe ne correspond à aucune famille enregistrée"
 
+            login_form.errors.clear()
+
         elif registration_form.is_valid():
 
             family_name_form = registration_form.cleaned_data.get('family_name')
             password_form = registration_form.cleaned_data.get('family_password')
+            password_form2 = registration_form.cleaned_data.get('family_password2')
 
-            try:
-                new_family = Family.objects.create(name=family_name_form, password=password_form)
-                message="Votre famille a été correctement ajoutée, créé vous en tant que member maintenant"
+            if password_form == password_form2:
+
+                try:
+                    new_family = Family.objects.create(name=family_name_form, password=password_form)
+                    message="Votre famille a été correctement ajoutée, vous pouvez accéder à votre espace famille"
+                
+                except Family.DoesNotExist:
+                    message="La saisie est incorrecte"
             
-            except Family.DoesNotExist:
-                message="La saisie est incorrecte"
-
+            else:
+                message="Les mots de passe doivent être identiques"
+            
     return render(request, 'identification.html', context={'login_form': login_form, 'registration_form': registration_form, 'message': message})

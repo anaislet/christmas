@@ -15,7 +15,7 @@
 <div class="accueil_authentication">
     <div class="authentication">
         <h2>Accéder à votre </br>espace famille</h2>
-        <form method="post">
+        <form method="post" novalidate>
             {{ login_form.as_p }}
             {% csrf_token %}
             <button type="submit" >Connexion</button>
@@ -23,11 +23,14 @@
     </div>
     <div class="authentication">
         <h2>Nouvelle famille ? </br>Inscrivez-vous ici</h2>
-        <form method="post">
+        <form method="post" novalidate>
             {{ registration_form.as_p }}
             {% csrf_token %}
             <button type="submit" >Inscription</button>
         </form>
+    </div>
+    <div class="message">
+        <p>{{message}}</p>
     </div>
 </div>
 {% endblock content %}
